@@ -4,4 +4,20 @@ const getItems = async() => {
   return items;
 };
 
-module.exports = {getItems};
+const getItem = async(id) => {
+
+};
+
+const deleteItem = async(id) => {
+
+};
+
+const addItem = async(item) => {
+
+};
+
+const modifyItem = async(item) => {
+
+};
+
+module.exports = {getItems, getItem, deleteItem, addItem, modifyItem};
