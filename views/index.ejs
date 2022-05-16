@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Home</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Items</h1>
+    <ul>
+      <% for (const item of items) { %>
+        <%- include('./partials/product.ejs', item) %>
+        <form action="/item/<%= item.id %>" method="GET">
+          <input type="submit" value="Delete">
+        </form>
+        <a href="/item/<%= item.id %>">Edit</a>
+      <% } %>
+    </ul>
   </body>
 </html>
