@@ -11,10 +11,21 @@
         <th>Name</th>
         <th>Description</th>
         <th>Image</th>
+        <th>Actions</th>
       </tr>
-      <% for (const item of items) { %>
-        <%- include('./partials/product.ejs', item)%>
-      <% } %>
+        <% for (const item of items) { %>
+          <tr>
+            <%- include('./partials/product.ejs', item)%>
+            <td>
+              <a href = "/item/<%= item.id %>">Edit</a>
+            </td>
+            <td>
+              <form action="/item/<%= item.id %>?_method=DELETE" method="POST">
+                <input type='submit' value='Delete'/>
+              </form>
+            </td>
+          </tr>
+        <% } %>
     </table>
   </body>
 </html>
