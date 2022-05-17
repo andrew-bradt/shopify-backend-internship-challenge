@@ -1,23 +1,34 @@
-<main>
-  <form action="/item/<%= id %>?_method=PUT" method="POST">
-    <input type="text" name="id" value="<%= id %>" aria-hidden hidden>
-    <div>
-      <label for="name">Name</label>
-      <input type="text" name="name" placeholder="Item Name" value = "<%= name %>">
-    </div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <main>
+      <form action="/item/<%= id %>?_method=PUT" method="POST">
+        <input type="text" name="id" value="<%= id %>" aria-hidden hidden>
+        <div>
+          <label for="name">Name</label>
+          <input type="text" name="name" placeholder="Item Name" value = "<%= name %>">
+        </div>
+      
+        <div>
+          <label for="name">Description</label>
+          <input type="textarea" name="description" placeholder="description" value="<%= description %>">
+        </div>
+      
+        <div>
+          <label for="image-url">Image URL</label>
+          <input type="text" name="imgURL" placeholder="Image URL" value="<%= imgURL %>">
+        </div>
+      
+        <input type="submit" value="Save">
+      </form>
   
-    <div>
-      <label for="name">Description</label>
-      <input type="textarea" name="description" placeholder="description" value="<%= description %>">
-    </div>
+      <button><a href="/">Cancel</a></button>
+      
+      <%- include('./partials/delete-product.ejs', {id}) %>
+    </main>
+  </body>
   
-    <div>
-      <label for="image-url">Image URL</label>
-      <input type="text" name="imgURL" placeholder="Image URL" value="<%= imgURL %>">
-    </div>
-  
-    <input type="submit" value="Save">
-  </form>
-  
-  <%- include('./partials/delete-product.ejs', {id}) %>
-</main>
+</html>

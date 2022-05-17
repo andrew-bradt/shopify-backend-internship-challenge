@@ -3,8 +3,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+button > a{
+  text-decoration: none;
+  color:black;
+  cursor: default;
 }
 
 img {

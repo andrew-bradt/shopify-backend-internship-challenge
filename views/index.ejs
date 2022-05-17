@@ -19,7 +19,7 @@
           <tr>
             <%- include('./partials/product.ejs', item)%>
             <td>
-              <a href = "/item/<%= item.id %>">Edit</a>
+              <button><a href = "/item/<%= item.id %>">Edit</a></button>
               <%- include('./partials/delete-product.ejs', {id: item.id}) %>
             </td>
           </tr>

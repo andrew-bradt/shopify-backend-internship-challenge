@@ -27,7 +27,7 @@ router.put('/:id', async(req, res) => {
 
 router.delete('/:id', async(req, res) => {
   const {id} = req.params;
-  await deleteItemById(id);
+  await deleteItem(id);
   res.redirect('/');
 });
 
