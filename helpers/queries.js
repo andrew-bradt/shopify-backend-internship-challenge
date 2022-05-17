@@ -6,21 +6,17 @@ const getItems = async() => {
   return items;
 };
 
-const addItem = async(item) => {
-  
-};
-
-const getItemById = async(id) => {
+const getItem = async(id) => {
   const res = await client.get(id);
   return res;
 };
 
-const deleteItemById = async(id) => {
+const deleteItem = async(id) => {
   const res = await client.delete(id);
 };
 
-const modifyItemById = async(id, item) => {
+const addOrModifyItem = async(id, item) => {
   const res = await client.set(id, item);
 };
 
-module.exports = {getItems, addItem, getItemById, deleteItemById, modifyItemById};
+module.exports = {getItems, getItem, deleteItem, addOrModifyItem};

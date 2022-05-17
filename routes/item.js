@@ -2,23 +2,26 @@ const express = require('express');
 const router = express.Router();
 const {v4: uuidv4} = require('uuid');
 
-const {getItemById, addItem, modifyItemById, deleteItemById} = require('../helpers/queries');
+const {getItem, addOrModifyItem, deleteItem} = require('../helpers/queries');
 
 router.get('/:id', async(req, res) => {
   const {id} = req.params;
-  const item = await getItemById(id);
+  const item = await getItem(id);
   res.render('item', item);
 });
 
-router.post('/:id', async(req, res) => {
-  const {id} = req.params;
+router.post('/', async(req, res) => {
+  const id = uuidv4();
+  const item = req.body;
+  item.id = id;
+  await addOrModifyItem(id, item);
   res.redirect('/');
 });
 
-router.put('/', async(req, res) => {
-  const id = uuidv4();
+router.put('/:id', async(req, res) => {
+  const {id} = req.params
   const item = req.body;
-  await modifyItemById(id, item);
+  await addOrModifyItem(id, item);
   res.redirect('/');
 });
 
