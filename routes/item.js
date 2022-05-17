@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {v4: uuidv4} = require('uuid');
 
 const {getItemById, addItem, modifyItemById, deleteItemById} = require('../helpers/queries');
 
@@ -14,8 +15,8 @@ router.post('/:id', async(req, res) => {
   res.redirect('/');
 });
 
-router.put('/:id', async(req, res) => {
-  const {id} = req.params;
+router.put('/', async(req, res) => {
+  const id = uuidv4();
   const item = req.body;
   await modifyItemById(id, item);
   res.redirect('/');

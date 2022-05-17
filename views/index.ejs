@@ -5,10 +5,8 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <%- include('./partials/add-product') %>
     <button id="toggle-add-item">Add Item</button>
-    <form id="add-item" hidden>
-      <h1>test</h1>
-    </form>
     <h1>Items</h1>
     <table>
     <tr>
@@ -22,8 +20,6 @@
             <%- include('./partials/product.ejs', item)%>
             <td>
               <a href = "/item/<%= item.id %>">Edit</a>
-            </td>
-            <td>
               <form action="/item/<%= item.id %>?_method=DELETE" method="POST">
                 <input type='submit' value='Delete'/>
               </form>

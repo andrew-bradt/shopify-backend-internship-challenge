@@ -7,5 +7,6 @@
     hiddenState = !hiddenState;
     button.innerText = (hiddenState) ? 'Add Item' : 'Cancel';
     form.hidden = hiddenState;
+    form.reset();
   });
 })();
