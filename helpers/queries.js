@@ -1,10 +1,8 @@
 // TODO: Implement all helpers with REPL.IT DB
 const client = require('../config/db');
 
-const GET_KEYS = async() => await client.list();
-
 const getItems = async() => {
-  const items = require('../data/items');
+  const items = require('../db/seeds');
   return items;
 };
 
@@ -24,4 +22,4 @@ const modifyItemById = async(item) => {
 
 };
 
-module.exports = {GET_KEYS, getItems, addItem, getItemById, deleteItemById, modifyItemById};
+module.exports = {getItems, addItem, getItemById, deleteItemById, modifyItemById};
