@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {getItem, deleteItem, addItem, modifyItem} = require('../helpers/queries');
+const {getItemById, addItem, modifyItemById, deleteItemById} = require('../helpers/queries');
 
 router.get('/:id', async(req, res) => {
   const {id} = req.params;
@@ -20,6 +20,7 @@ router.put('/:id', async(req, res) => {
 
 router.delete('/:id', async(req, res) => {
   const {id} = req.params;
+  await deleteItemById(id);
   res.redirect('/');
 });
 
