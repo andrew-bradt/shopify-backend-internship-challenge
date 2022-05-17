@@ -1,8 +1,8 @@
-// TODO: Implement all helpers with REPL.IT DB
 const client = require('../config/db');
 
 const getItems = async() => {
-  const items = require('../db/seeds');
+  const res = await client.getAll();
+  const items = Object.values(res);
   return items;
 };
 

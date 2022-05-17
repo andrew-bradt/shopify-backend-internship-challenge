@@ -3,7 +3,6 @@ const router = express.Router();
 
 const {getItems} = require('../helpers/queries.js');
 
-/* GET home page. */
 router.get('/', async(req, res, next) => {
   const items = await getItems();
   const templateVars = { items };
