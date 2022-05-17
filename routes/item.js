@@ -17,7 +17,7 @@ router.post('/:id', async(req, res) => {
 router.put('/:id', async(req, res) => {
   const {id} = req.params;
   const item = req.body;
-  const updatedItem = await modifyItemById(id, item);
+  await modifyItemById(id, item);
   res.redirect('/');
 });
 

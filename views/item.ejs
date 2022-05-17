@@ -1,5 +1,6 @@
 <main>
   <form action="/item/<%= id %>?_method=PUT" method="POST">
+    <input type="text" name="id" value="<%= id %>" aria-hidden hidden>
     <div>
       <label for="name">Name</label>
       <input type="text" name="name" placeholder="Item Name" value = "<%= name %>">
