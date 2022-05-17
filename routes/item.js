@@ -17,8 +17,10 @@ router.get('/:id', async(req, res) => {
     console.log(itemCache.keys());
     const {id} = req.params;
     const item = itemCache.get(id) || await getItem(id);
+
     itemCache.put(id, item, ONE_DAY_MS);
     res.render('item', item);
+    
   } catch (err) {
     console.error(err.message);
   }
@@ -28,7 +30,10 @@ router.post('/', async(req, res) => {
   const id = uuidv4();
   const item = req.body;
   item.id = id;
+
   await addOrModifyItem(id, item);
+  itemCache.put(id, item, ONE_DAY_MS);
+  
   res.redirect('/');
 });
 
