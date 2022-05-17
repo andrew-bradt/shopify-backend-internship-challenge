@@ -1,9 +1,13 @@
 const client = require('../config/db');
 
 const getItems = async() => {
-  const res = await client.getAll();
-  const items = Object.values(res);
-  return items;
+  try {
+    const res = await client.getAll();
+    const items = Object.values(res);
+    return items;
+  } catch (err) {
+    console.error(err.message);
+  }
 };
 
 const addItem = async(item) => {
