@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const {getItem, deleteItem, addItem, modifyItem} = require('../helpers/queries');
+
 router.get('/:id', async(req, res) => {
   const {id} = req.params;
   res.render('item');
