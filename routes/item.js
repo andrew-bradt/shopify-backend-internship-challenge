@@ -5,7 +5,8 @@ const {getItemById, addItem, modifyItemById, deleteItemById} = require('../helpe
 
 router.get('/:id', async(req, res) => {
   const {id} = req.params;
-  res.render('item');
+  const item = await getItemById(id);
+  res.render('item', item);
 });
 
 router.post('/:id', async(req, res) => {
@@ -15,6 +16,8 @@ router.post('/:id', async(req, res) => {
 
 router.put('/:id', async(req, res) => {
   const {id} = req.params;
+  const item = req.body;
+  const updatedItem = await modifyItemById(id, item);
   res.redirect('/');
 });
 

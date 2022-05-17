@@ -11,15 +11,16 @@ const addItem = async(item) => {
 };
 
 const getItemById = async(id) => {
-
+  const res = await client.get(id);
+  return res;
 };
 
 const deleteItemById = async(id) => {
   const res = await client.delete(id);
 };
 
-const modifyItemById = async(item) => {
-
+const modifyItemById = async(id, item) => {
+  const res = await client.set(id, item);
 };
 
 module.exports = {getItems, addItem, getItemById, deleteItemById, modifyItemById};

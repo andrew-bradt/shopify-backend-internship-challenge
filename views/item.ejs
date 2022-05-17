@@ -1,18 +1,18 @@
 <main>
-  <form>
+  <form action="/item/<%= id %>?_method=PUT" method="POST">
     <div>
       <label for="name">Name</label>
-      <input type="text" name="name" placeholder="Item Name">
+      <input type="text" name="name" placeholder="Item Name" value = "<%= name %>">
     </div>
   
     <div>
       <label for="name">Description</label>
-      <input type="textarea" name="description" placeholder="description">
+      <input type="textarea" name="description" placeholder="description" value="<%= description %>">
     </div>
   
     <div>
       <label for="image-url">Image URL</label>
-      <input type="text" name="image-url" placeholder="Image URL">
+      <input type="text" name="imgURL" placeholder="Image URL" value="<%= imgURL %>">
     </div>
   
     <input type="submit" value="Save">
