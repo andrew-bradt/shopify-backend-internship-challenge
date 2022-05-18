@@ -6,7 +6,7 @@ const inventoryCache = new Cache();
 const deleteCache = new Cache();
 
 const trackInventoryCache = () => {
-  let state = true;
+  let state = false;
   const isInventoryCurrent = () => state;
 
   const setInventoryToStale = (req, res, next) => {
@@ -14,9 +14,8 @@ const trackInventoryCache = () => {
     next();
   };
   
-  const setInventoryToCurrent = (req, res, next) => {
+  const setInventoryToCurrent = () => {
     state = true;
-    next();
   };
   
   return {isInventoryCurrent, setInventoryToCurrent, setInventoryToStale};

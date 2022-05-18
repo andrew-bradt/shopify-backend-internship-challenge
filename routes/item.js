@@ -25,6 +25,7 @@ router.delete('/:id', async(req, res) => {
     const {id} = req.params;
     await deleteItem(id);
     res.redirect('/');
+    
   } catch (err) {
     console.error(err.message);
   }
@@ -43,7 +44,6 @@ router.post('/', async(req, res) => {
   } catch (err) {
     console.error(err.msg);
   }
-  
 });
 
 router.put('/:id', async(req, res) => {
