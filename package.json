@@ -6,7 +6,8 @@
     "start": "NODE_ENV=production node ./bin/www",
     "dev": "NODE_ENV=development nodemon ./bin/www",
     "db:reset": "node ./db/reset-db.js",
-    "db:list": "nodemon ./db/list.js"
+    "db:list": "nodemon ./db/list.js",
+    "db:comments": "nodemon ./db/list.js comments"
   },
   "dependencies": {
     "@replit/database": "^2.0.2",

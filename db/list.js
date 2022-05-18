@@ -1,3 +1,9 @@
+const listMode = process.argv[2];
 const client = require('../config/db');
 
-client.get('comments').then(console.log);
+if (listMode === 'comments') { 
+  client.get('comments').then(console.log);
+} else {
+  client.getAll().then(console.log);
+}
+
