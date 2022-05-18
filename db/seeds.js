@@ -21,4 +21,6 @@ const items = [
   }
 ];
 
-module.exports = items;
+const comments = '';
+
+module.exports = {items, comments};

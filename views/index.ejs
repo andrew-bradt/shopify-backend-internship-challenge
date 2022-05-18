@@ -15,11 +15,11 @@
         <th>Image</th>
         <th>Actions</th>
       </tr>
-        <% for (const item of items) { %>
+        <% for (const id in items) { %>
           <tr>
-            <%- include('./partials/product.ejs', item)%>
+            <%- include('./partials/product.ejs', items[id])%>
             <td>
-              <button><a href = "/item/<%= item.id %>">Edit</a></button>
+              <button><a href = "/item/<%= id %>">Edit</a></button>
             </td>
           </tr>
         <% } %>

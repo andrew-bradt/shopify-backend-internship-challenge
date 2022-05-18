@@ -4,6 +4,7 @@ const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 const itemCache = new Cache();
 const inventoryCache = new Cache();
 const deleteCache = new Cache();
+const commentCache = new Cache();
 
 const trackInventoryCache = () => {
   let state = false;
@@ -28,6 +29,7 @@ module.exports = {
   itemCache,
   inventoryCache,
   deleteCache,
+  commentCache,
   isInventoryCurrent,
   setInventoryToCurrent,
   setInventoryToStale

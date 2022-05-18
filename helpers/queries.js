@@ -1,10 +1,8 @@
 const client = require('../config/db');
 
 const getItems = async() => {
-  const res = await client.getAll();
-  const items = Object.values(res);
-  delete items.deletions;
-  return items;
+  const data = await client.getAll();
+  return data;
 };
 
 const getItem = async(id) => {
@@ -24,4 +22,14 @@ const addOrModifyItem = async(id, item) => {
   const res = await client.set(id, item);
 };
 
-module.exports = {getItems, getItem, deleteItem, addOrModifyItem};
+const addComment = async(id, comment, log) => {
+  console.log('log: ', log);
+  console.log('comment: ', comment);
+  console.log('id: ', id);
+  const newLog = `${log || ''}${id}: ${comment}\n`;
+  await client.set('comments', newLog);
+  
+  return newLog;
+};
+
+module.exports = {getItems, getItem, deleteItem, addOrModifyItem, addComment};

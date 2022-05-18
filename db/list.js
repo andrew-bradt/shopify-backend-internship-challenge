@@ -1,3 +1,3 @@
 const client = require('../config/db');
 
-client.getAll().then(console.log);
+client.get('comments').then(console.log);
