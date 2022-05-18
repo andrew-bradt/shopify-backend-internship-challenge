@@ -22,10 +22,14 @@ const addOrModifyItem = async(id, item) => {
   const res = await client.set(id, item);
 };
 
+/* 
+REPL.IT's DB only allows persistant key-value pairs with no separate collections, 
+so a work-around is needed to persist Item and Comments while segmenting them.
+
+This function will append a new string to the previous delete log, where a new-line 
+is used as a delimiter for each entry
+*/
 const addComment = async(id, comment, log) => {
-  console.log('log: ', log);
-  console.log('comment: ', comment);
-  console.log('id: ', id);
   const newLog = `${log || ''}${id}: ${comment}\n`;
   await client.set('comments', newLog);
   

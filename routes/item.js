@@ -5,6 +5,13 @@ const {v4: uuidv4} = require('uuid');
 const {getItem, addOrModifyItem, deleteItem, addComment} = require('../helpers/queries');
 const { ONE_DAY_MS, itemCache, deleteCache, commentCache, setInventoryToStale } = require('../helpers/cache');
 
+const updateComments = async(id, comment) => {
+  commentCache.put(id, comment);
+  const comments = commentCache.get('comments');
+  const newLog = await addComment(id, comment, comments);
+  commentCache.put('comments', newLog);
+};
+
 router.get('/:id', async(req, res) => {
   try {
     const {id} = req.params;
@@ -31,13 +38,11 @@ router.delete('/:id', async(req, res) => {
     const deletedItem = itemCache.get(id);
     
     deleteCache.put(id, deletedItem);
-    commentCache.put(id, comment);
+    
     itemCache.del(id);
 
-    const comments = commentCache.get('comments');
-    const newLog = await addComment(id, comment, comments);
-    commentCache.put('comments', newLog);
-    
+    updateComments(id, comment);
+
     res.render('undo-delete', templateVars);
 
   } catch (err) {
@@ -77,18 +82,14 @@ router.put('/:id', async(req, res) => {
 router.post('/:id/undo-delete', async(req, res) => {
   const {id} = req.params;
   const item = deleteCache.get(id);
-  const comments = commentCache.get('comments');
+
   try {
     await addOrModifyItem(id, item);
-
-    const newLog = await addComment(id, 'Undo Delete', comments);
-    commentCache.put('comments', newLog);
-  
     deleteCache.del(id);
-    commentCache.del(id);
+    updateComments(id, 'Undo Delete');
     
     res.redirect(`/item/${id}`);
-    
+
   } catch (err) {
     console.error(err.message);
   }
