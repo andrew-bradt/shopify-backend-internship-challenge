@@ -23,9 +23,11 @@ router.use(setInventoryToStale);
 router.delete('/:id', async(req, res) => {
   try {
     const {id} = req.params;
+    const {comment} = req.body;
+    const templateVars = {id, comment};
     await deleteItem(id);
-    res.redirect('/');
-    
+    res.render('undo-delete', templateVars);
+
   } catch (err) {
     console.error(err.message);
   }
@@ -57,9 +59,10 @@ router.put('/:id', async(req, res) => {
   } catch (err) {
     console.error(err.message);
   }
-  
 });
 
-
+router.post('/:id/undo-delete', async(req, res) => {
+  
+});
 
 module.exports = router;

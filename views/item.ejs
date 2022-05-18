@@ -4,8 +4,10 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <title><%= name %> | Edit</title>
   </head>
-  <body>
+<body>
     <main>
+      <section>
+      <h1>Edit</h1>
       <form action="/item/<%= id %>?_method=PUT" method="POST">
         <input type="text" name="id" value="<%= id %>" aria-hidden hidden>
         <div>
@@ -27,9 +29,9 @@
       </form>
   
       <button><a href="/">Cancel</a></button>
-      
+    </section>
       <%- include('./partials/delete-product.ejs', {id}) %>
     </main>
   </body>
-  
+  <script src="/javascripts/delete.js"></script>
 </html>

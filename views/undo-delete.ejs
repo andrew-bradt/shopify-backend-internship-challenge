@@ -1,0 +1,10 @@
+<main>
+  <h1>Deleted</h1>
+  <p><strong>Item ID:</strong> <%= id %></p>
+  <p><strong>Comment:</strong> <%= comment %></p>
+  <button><a href="/">Home</a></button>
+  
+  <form action="/item/<%= id %>/undo-delete" method="POST">
+    <input type="submit" value="Undo Delete">
+  </form>
+</main>
