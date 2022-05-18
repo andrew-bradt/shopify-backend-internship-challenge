@@ -6,4 +6,3 @@ if (listMode === 'comments') {
 } else {
   client.getAll().then(console.log);
 }
-
