@@ -18,6 +18,7 @@ router.get('/:id', async(req, res) => {
   }
 });
 
+// When the DB is modified, update state to make sure that the inventoryCache isn't used for GET /  
 router.use(setInventoryToStale);
 
 router.delete('/:id', async(req, res) => {
@@ -28,6 +29,7 @@ router.delete('/:id', async(req, res) => {
     
     await deleteItem(id);
     const deletedItem = itemCache.get(id);
+    
     deleteCache.put(id, deletedItem);
     itemCache.del(id);
     
@@ -48,6 +50,7 @@ router.post('/', async(req, res) => {
     itemCache.put(id, item, ONE_DAY_MS);
 
     res.redirect('/');
+    
   } catch (err) {
     console.error(err.msg);
   }
@@ -69,6 +72,7 @@ router.put('/:id', async(req, res) => {
 router.post('/:id/undo-delete', async(req, res) => {
   const {id} = req.params;
   const item = deleteCache.get(id);
+
   await addOrModifyItem(id, item);
   deleteCache.del(id);
 
