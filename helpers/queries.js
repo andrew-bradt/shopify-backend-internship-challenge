@@ -2,7 +2,9 @@ const client = require('../config/db');
 
 const getItems = async() => {
   const res = await client.getAll();
+  delete items.deletions;
   const items = Object.values(res);
+  
   return items;
 };
 
