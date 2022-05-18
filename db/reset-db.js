@@ -6,7 +6,6 @@ const seeds = require('./seeds');
     await client.empty();
     
     for await (const seed of seeds) {
-      // const item = new Item(seed);
       client.set(seed.id, seed);
     }
     
