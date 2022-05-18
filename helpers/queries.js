@@ -5,6 +5,13 @@ const getItems = async() => {
   return data;
 };
 
+const getComments = async() => {
+  const data = await client.getAll();
+  const {comments} = data;
+  console.log(comments);
+  return comments;
+}
+
 const getItem = async(id) => {
   const res = await client.get(id);
   return res;
@@ -36,4 +43,4 @@ const addComment = async(id, comment, log) => {
   return newLog;
 };
 
-module.exports = {getItems, getItem, deleteItem, addOrModifyItem, addComment};
+module.exports = {getItems, getItem, deleteItem, addOrModifyItem, addComment, getComments};

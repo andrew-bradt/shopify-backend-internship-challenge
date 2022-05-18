@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 // import routers
 const indexRouter = require('./routes/index');
 const itemRouter = require('./routes/item');
+const deletionLogRouter = require('./routes/deletion-log');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/item', itemRouter);
+app.use('/deletion-log', deletionLogRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
