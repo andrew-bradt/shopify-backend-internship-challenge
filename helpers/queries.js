@@ -2,9 +2,8 @@ const client = require('../config/db');
 
 const getItems = async() => {
   const res = await client.getAll();
-  delete items.deletions;
   const items = Object.values(res);
-  
+  delete items.deletions;
   return items;
 };
 
@@ -14,7 +13,11 @@ const getItem = async(id) => {
 };
 
 const deleteItem = async(id) => {
-  const res = await client.delete(id);
+  try {
+    await client.delete(id);
+  } catch(err) {
+    console.error(err.message);
+  }
 };
 
 const addOrModifyItem = async(id, item) => {

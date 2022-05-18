@@ -3,7 +3,7 @@ const router = express.Router();
 const {v4: uuidv4} = require('uuid');
 
 const {getItem, addOrModifyItem, deleteItem} = require('../helpers/queries');
-const { ONE_DAY_MS, itemCache, inventoryCache, deleteCache, setInventoryToStale } = require('../helpers/cache');
+const { ONE_DAY_MS, itemCache, deleteCache, setInventoryToStale } = require('../helpers/cache');
 
 router.get('/:id', async(req, res) => {
   try {
@@ -25,7 +25,12 @@ router.delete('/:id', async(req, res) => {
     const {id} = req.params;
     const {comment} = req.body;
     const templateVars = {id, comment};
+    
     await deleteItem(id);
+    const deletedItem = itemCache.get(id);
+    deleteCache.put(id, deletedItem);
+    itemCache.del(id);
+    
     res.render('undo-delete', templateVars);
 
   } catch (err) {
@@ -62,7 +67,12 @@ router.put('/:id', async(req, res) => {
 });
 
 router.post('/:id/undo-delete', async(req, res) => {
-  
+  const {id} = req.params;
+  const item = deleteCache.get(id);
+  await addOrModifyItem(id, item);
+  deleteCache.del(id);
+
+  res.redirect(`/item/${id}`);
 });
 
 module.exports = router;
