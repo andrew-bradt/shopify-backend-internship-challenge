@@ -1,15 +1,6 @@
 const client = require('../config/db');
 const seeds = require('./seeds');
 
-// class Item {
-//   constructor({id, name, description, imgURL}) {
-//     this.id = id;
-//     this.name = name;
-//     this.description = description;
-//     this.imgURL = imgURL;
-//   }
-// }
-
 (async() => {
   try {
     await client.empty();
