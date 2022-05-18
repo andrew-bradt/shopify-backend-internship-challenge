@@ -19,7 +19,6 @@ router.get('/', async(req, res) => {
     
     res.render('index', templateVars);
     setInventoryToCurrent();
-    console.log(isInventoryCurrent());
     
   } catch (err) {
     console.error(err.message);
