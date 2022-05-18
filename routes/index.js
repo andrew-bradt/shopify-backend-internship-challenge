@@ -13,6 +13,11 @@ router.get('/', async(req, res) => {
 
     } else {
       const data = await getItems();
+      
+      /* 
+      Separate collections not possible with REPL.IT DB so comments and items must be coupled in DB
+      use spread operator to segment after retrieving entire collection
+      */
       const {comments, ...items } = data;
       
       inventoryCache.put('inventory', items, ONE_DAY_MS);
@@ -21,6 +26,8 @@ router.get('/', async(req, res) => {
     }
     
     res.render('index', templateVars);
+    
+    // Update state indicating inventory cache is up to date since it was just retrieved
     setInventoryToCurrent();
     
   } catch (err) {
