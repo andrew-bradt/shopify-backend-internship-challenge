@@ -78,16 +78,20 @@ router.post('/:id/undo-delete', async(req, res) => {
   const {id} = req.params;
   const item = deleteCache.get(id);
   const comments = commentCache.get('comments');
-  console.log('comments: ', comments);
-  await addOrModifyItem(id, item);
+  try {
+    await addOrModifyItem(id, item);
 
-  const newLog = await addComment(id, 'Undo Delete', comments);
-  commentCache.put('comments', newLog);
-
-  deleteCache.del(id);
-  commentCache.del(id);
+    const newLog = await addComment(id, 'Undo Delete', comments);
+    commentCache.put('comments', newLog);
   
-  res.redirect(`/item/${id}`);
+    deleteCache.del(id);
+    commentCache.del(id);
+    
+    res.redirect(`/item/${id}`);
+    
+  } catch (err) {
+    console.error(err.message);
+  }
 });
 
 module.exports = router;
