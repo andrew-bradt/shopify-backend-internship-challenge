@@ -9,7 +9,8 @@
 
 
 ### Viewing a List of Items
-To try out the application, [visit this link on Replit.](https://shopify-backend-internship-challenge--andrewbradt.repl.co/)  This link takes the user to the index page and displays a table containing each item.
+1. [Visit the index page](https://shopify-backend-internship-challenge--andrewbradt.repl.co/) on Replit
+2. Observe the table of items
 
 ### Adding an Item
 1. Click on the "Add Item" button to unhide a form for submitting a new item
