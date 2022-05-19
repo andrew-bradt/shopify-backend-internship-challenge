@@ -5,32 +5,32 @@
     <title><%= name %> | Edit</title>
   </head>
 <body>
+    <%- include('./partials/nav') %>
     <main>
       <section>
-      <h1>Edit</h1>
-      <form action="/item/<%= id %>?_method=PUT" method="POST">
-        <input type="text" name="id" value="<%= id %>" aria-hidden hidden>
-        <div>
-          <label for="name">Name</label>
-          <input type="text" name="name" placeholder="Item Name" value = "<%= name %>">
-        </div>
-      
-        <div>
-          <label for="name">Description</label>
-          <input type="textarea" name="description" placeholder="description" value="<%= description %>">
-        </div>
-      
-        <div>
-          <label for="image-url">Image URL</label>
-          <input type="text" name="imgURL" placeholder="Image URL" value="<%= imgURL %>">
-        </div>
-      
-        <input type="submit" value="Save">
-      </form>
-  
-      <button><a href="/">Cancel</a></button>
+        <h1>Edit</h1>
+        <form action="/item/<%= id %>?_method=PUT" method="POST">
+          <input type="text" name="id" value="<%= id %>" aria-hidden hidden>
+          <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" placeholder="Item Name" value = "<%= name %>">
+          </div>
+        
+          <div>
+            <label for="name">Description</label>
+            <input type="textarea" name="description" placeholder="description" value="<%= description %>">
+          </div>
+        
+          <div>
+            <label for="image-url">Image URL</label>
+            <input type="text" name="imgURL" placeholder="Image URL" value="<%= imgURL %>">
+          </div>
+        
+          <input type="submit" value="Save">
+        </form>
     </section>
-      <%- include('./partials/delete-product.ejs', {id}) %>
+    
+    <%- include('./partials/delete-product.ejs', {id}) %>
     </main>
   </body>
   <script src="/javascripts/delete.js"></script>

@@ -18,7 +18,9 @@
       </tr>
         <% for (const id in items) { %>
           <tr>
-            <%- include('./partials/product.ejs', items[id])%>
+            <td><%= items[id].name %></td>
+            <td><%= items[id].description %></td>
+            <td><img src = <%= items[id].imgURL %>/></td>
             <td>
               <button><a href = "/item/<%= id %>">Edit</a></button>
             </td>
