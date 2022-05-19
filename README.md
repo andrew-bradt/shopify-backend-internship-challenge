@@ -1,4 +1,10 @@
 # Shopify Backend Developer Intern Challenge
+
+## Links
+
+[Github Repo](https://github.com/andrew-bradt/shopify-backend-internship-challenge)
+
+[Replit - Live Application](https://shopify-backend-internship-challenge--andrewbradt.repl.co/)
 ## Features
 
 1. Basic CRUD Functionality
@@ -6,7 +12,6 @@
 3. Persistent Storage using the Replit Database
 
 ## Instructions
-
 
 ### Viewing a List of Items
 1. [Visit the index page](https://shopify-backend-internship-challenge--andrewbradt.repl.co/) on Replit
@@ -42,8 +47,3 @@
 The delete log contains a list of entries with an item id (UUID v4) and a deletion comment.  Reverted deletions are represented with a comment of "Undo Delete".
 1. On any page, click the "Deletion Log" link
 2. View the deletion log
-## Links
-
-[Github Repo](https://github.com/andrew-bradt/shopify-backend-internship-challenge)
-
-[Replit - Live Application](https://shopify-backend-internship-challenge--andrewbradt.repl.co/)
